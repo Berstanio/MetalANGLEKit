@@ -22,17 +22,23 @@ export PATH="$(pwd)/depot_tools:$PATH"
 rm -r Frameworks/
 
 autoninja -C angle/out/$BUILD_TYPE-iphoneos
-autoninja -C angle/out/$BUILD_TYPE-iphonesimulator
+autoninja -C angle/out/$BUILD_TYPE-iphonesimulator_x86_64
+autoninja -C angle/out/$BUILD_TYPE-iphonesimulator_arm64
 
 TEMP_DIR=$(mktemp -d)
 
+mkdir $TEMP_DIR/simulator_x86_64
+mkdir $TEMP_DIR/simulator_arm64
 mkdir $TEMP_DIR/simulator
 mkdir $TEMP_DIR/device
 
-cp -R angle/out/$BUILD_TYPE-iphonesimulator/libEGL.framework $TEMP_DIR/simulator
-cp -R angle/out/$BUILD_TYPE-iphonesimulator/libGLESv2.framework $TEMP_DIR/simulator
+cp -R angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.framework $TEMP_DIR/simulator/
+cp -R angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.framework $TEMP_DIR/simulator/
 cp -R angle/out/$BUILD_TYPE-iphoneos/libEGL.framework $TEMP_DIR/device
 cp -R angle/out/$BUILD_TYPE-iphoneos/libGLESv2.framework $TEMP_DIR/device
+
+lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.framework/libEGL angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libEGL.framework/libEGL -output $TEMP_DIR/simulator/libEGL.framework/libEGL
+lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.framework/libGLESv2 angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libGLESv2.framework/libGLESv2 -output $TEMP_DIR/simulator/libGLESv2.framework/libGLESv2
 
 SDKS="device simulator"
 for SDK in $SDKS; do 
