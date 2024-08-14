@@ -18,6 +18,7 @@ jobs:
           submodules: 'true'
       - name: Setup repository
         run: |
+          brew install ninja
           ./setup-angle.sh
       - name: Build angle
         run: |
