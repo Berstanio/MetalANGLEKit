@@ -21,7 +21,7 @@ jobs:
           ./setup-angle.sh
       - name: Build angle
         run: |
-          ./build-angle.sh
+          ./build-angle.sh Release
       - name: Build MetalANGLEKit
         run: |
           ./build-metalanglekit.sh
