@@ -26,3 +26,10 @@ jobs:
       - name: Build MetalANGLEKit
         run: |
           ./build-metalanglekit.sh
+      - name: Archive MetalANGLEKit      
+        uses: actions/upload-artifact@v4
+        with:
+          name: metalanglekit
+          path: |
+            build/MetalANGLEKit.xcframework/
+            
