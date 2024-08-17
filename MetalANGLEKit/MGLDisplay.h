@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-#include <MetalANGLEKit/egl_stub.h>
+#include <MetalANGLEKit/EGL/egl.h>
 
 bool IsMetalDisplayAvailable();
 

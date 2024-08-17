@@ -1,0 +1,302 @@
+diff --git a/include/EGL/egl.h b/include/EGL/egl.h
+index 51c1b2d4e..dd3d32b3e 100644
+--- a/include/EGL/egl.h
++++ b/include/EGL/egl.h
+@@ -17,7 +17,11 @@ extern "C" {
+ ** Khronos $Git commit SHA1: 5b1165a76f $ on $Git commit date: 2023-06-22 06:48:34 -0700 $
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/EGL/eglplatform.h>
++#else
+ #include <EGL/eglplatform.h>
++#endif
+ 
+ #ifndef EGL_EGL_PROTOTYPES
+ #define EGL_EGL_PROTOTYPES 1
+@@ -38,8 +42,13 @@ extern "C" {
+ #define EGL_VERSION_1_0 1
+ typedef unsigned int EGLBoolean;
+ typedef void *EGLDisplay;
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#include <MetalANGLEKit/EGL/eglplatform.h>
++#else
+ #include <KHR/khrplatform.h>
+ #include <EGL/eglplatform.h>
++#endif
+ typedef void *EGLConfig;
+ typedef void *EGLSurface;
+ typedef void *EGLContext;
+diff --git a/include/EGL/eglext.h b/include/EGL/eglext.h
+index f8d2ccec4..3c87c2bb4 100644
+--- a/include/EGL/eglext.h
++++ b/include/EGL/eglext.h
+@@ -17,7 +17,13 @@ extern "C" {
+ ** Khronos $Git commit SHA1: 5b1165a76f $ on $Git commit date: 2023-06-22 06:48:34 -0700 $
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/EGL/egl.h>
++#include <MetalANGLEKit/EGL/eglplatform.h>
++#else
++#include <EGL/egl.h>
+ #include <EGL/eglplatform.h>
++#endif
+ 
+ #define EGL_EGLEXT_VERSION 20230622
+ 
+@@ -1497,7 +1503,11 @@ EGLAPI struct wl_buffer *EGLAPIENTRY eglCreateWaylandBufferFromImageWL (EGLDispl
+ #endif /* EGL_WL_create_wayland_buffer_from_image */
+ 
+ /* ANGLE EGL extensions */
+-#include "eglext_angle.h"
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/EGL/eglext_angle.h>
++#else
++#include <EGL/eglext_angle.h>
++#endif
+ 
+ #ifdef __cplusplus
+ }
+diff --git a/include/EGL/eglplatform.h b/include/EGL/eglplatform.h
+index 101fd74d2..9f6d74baa 100644
+--- a/include/EGL/eglplatform.h
++++ b/include/EGL/eglplatform.h
+@@ -15,7 +15,11 @@
+  * https://www.github.com/KhronosGroup/EGL-Registry/
+  */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ 
+ /* Macros used in EGL function prototype declarations.
+  *
+diff --git a/include/GLES/egl.h b/include/GLES/egl.h
+index 86f644c92..c62814ede 100644
+--- a/include/GLES/egl.h
++++ b/include/GLES/egl.h
+@@ -23,7 +23,13 @@
+ #ifndef __legacy_egl_h_
+ #define __legacy_egl_h_
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/EGL/egl.h>
++#include <MetalANGLEKit/GLES/gl.h>
++#else
+ #include <EGL/egl.h>
+ #include <GLES/gl.h>
++#endif
++
+ 
+ #endif /* __legacy_egl_h_ */
+diff --git a/include/GLES/gl.h b/include/GLES/gl.h
+index 9f3ed3438..cbd84ec6b 100644
+--- a/include/GLES/gl.h
++++ b/include/GLES/gl.h
+@@ -34,7 +34,11 @@ extern "C" {
+ **   https://github.com/KhronosGroup/OpenGL-Registry
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/GLES/glplatform.h>
++#else
+ #include <GLES/glplatform.h>
++#endif
+ 
+ #ifndef GL_APIENTRYP
+ #define GL_APIENTRYP GL_APIENTRY*
+@@ -54,7 +58,13 @@ extern "C" {
+ 
+ #ifndef GL_VERSION_ES_CM_1_0
+ #define GL_VERSION_ES_CM_1_0 1
++
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
++
+ typedef khronos_int8_t GLbyte;
+ typedef khronos_float_t GLclampf;
+ typedef khronos_int16_t GLshort;
+diff --git a/include/GLES/glplatform.h b/include/GLES/glplatform.h
+index 16060a9a7..d7b387a95 100644
+--- a/include/GLES/glplatform.h
++++ b/include/GLES/glplatform.h
+@@ -25,7 +25,11 @@
+  *      https://github.com/KhronosGroup/OpenGL-Registry
+  */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ 
+ #ifndef GL_API
+ #define GL_API      KHRONOS_APICALL
+diff --git a/include/GLES2/gl2.h b/include/GLES2/gl2.h
+index 3c5e6d3d6..7532206f8 100644
+--- a/include/GLES2/gl2.h
++++ b/include/GLES2/gl2.h
+@@ -15,7 +15,11 @@ extern "C" {
+ **   https://github.com/KhronosGroup/OpenGL-Registry
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/GLES2/gl2platform.h>
++#else
+ #include <GLES2/gl2platform.h>
++#endif
+ 
+ #ifndef GL_APIENTRYP
+ #define GL_APIENTRYP GL_APIENTRY*
+@@ -39,7 +43,11 @@ extern "C" {
+ 
+ #ifndef GL_ES_VERSION_2_0
+ #define GL_ES_VERSION_2_0 1
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ typedef khronos_int8_t GLbyte;
+ typedef khronos_float_t GLclampf;
+ typedef khronos_int32_t GLfixed;
+diff --git a/include/GLES2/gl2ext.h b/include/GLES2/gl2ext.h
+index 948cd8354..a4513b7b3 100644
+--- a/include/GLES2/gl2ext.h
++++ b/include/GLES2/gl2ext.h
+@@ -3940,7 +3940,11 @@ GL_APICALL void GL_APIENTRY glEndTilingQCOM (GLbitfield preserveMask);
+ #endif /* GL_VIV_shader_binary */
+ 
+ /* ANGLE GLES2 extensions */
+-#include "gl2ext_angle.h"
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/GLES2/gl2ext_angle.h>
++#else
++#include <GLES2/gl2ext_angle.h>
++#endif
+ 
+ #ifdef __cplusplus
+ }
+diff --git a/include/GLES2/gl2platform.h b/include/GLES2/gl2platform.h
+index 5bcce6d89..2fa66835e 100644
+--- a/include/GLES2/gl2platform.h
++++ b/include/GLES2/gl2platform.h
+@@ -14,7 +14,11 @@
+  *      https://github.com/KhronosGroup/OpenGL-Registry
+  */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ 
+ #ifndef GL_APICALL
+ #define GL_APICALL  KHRONOS_APICALL
+diff --git a/include/GLES3/gl3.h b/include/GLES3/gl3.h
+index 6bb4d8f91..b5d789720 100644
+--- a/include/GLES3/gl3.h
++++ b/include/GLES3/gl3.h
+@@ -15,7 +15,11 @@ extern "C" {
+ **   https://github.com/KhronosGroup/OpenGL-Registry
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/GLES3/gl3platform.h>
++#else
+ #include <GLES3/gl3platform.h>
++#endif
+ 
+ #ifndef GL_APIENTRYP
+ #define GL_APIENTRYP GL_APIENTRY*
+@@ -39,7 +43,11 @@ extern "C" {
+ 
+ #ifndef GL_ES_VERSION_2_0
+ #define GL_ES_VERSION_2_0 1
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ typedef khronos_int8_t GLbyte;
+ typedef khronos_float_t GLclampf;
+ typedef khronos_int32_t GLfixed;
+diff --git a/include/GLES3/gl31.h b/include/GLES3/gl31.h
+index 502d6feec..d1ee004d0 100644
+--- a/include/GLES3/gl31.h
++++ b/include/GLES3/gl31.h
+@@ -15,7 +15,11 @@ extern "C" {
+ **   https://github.com/KhronosGroup/OpenGL-Registry
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/GLES3/gl3platform.h>
++#else
+ #include <GLES3/gl3platform.h>
++#endif
+ 
+ #ifndef GL_APIENTRYP
+ #define GL_APIENTRYP GL_APIENTRY*
+@@ -39,7 +43,11 @@ extern "C" {
+ 
+ #ifndef GL_ES_VERSION_2_0
+ #define GL_ES_VERSION_2_0 1
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ typedef khronos_int8_t GLbyte;
+ typedef khronos_float_t GLclampf;
+ typedef khronos_int32_t GLfixed;
+diff --git a/include/GLES3/gl32.h b/include/GLES3/gl32.h
+index ae56b0e95..843300207 100644
+--- a/include/GLES3/gl32.h
++++ b/include/GLES3/gl32.h
+@@ -15,7 +15,11 @@ extern "C" {
+ **   https://github.com/KhronosGroup/OpenGL-Registry
+ */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/GLES3/gl3platform.h>
++#else
+ #include <GLES3/gl3platform.h>
++#endif
+ 
+ #ifndef GL_APIENTRYP
+ #define GL_APIENTRYP GL_APIENTRY*
+@@ -39,7 +43,11 @@ extern "C" {
+ 
+ #ifndef GL_ES_VERSION_2_0
+ #define GL_ES_VERSION_2_0 1
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ typedef khronos_int8_t GLbyte;
+ typedef khronos_float_t GLclampf;
+ typedef khronos_int32_t GLfixed;
+diff --git a/include/GLES3/gl3platform.h b/include/GLES3/gl3platform.h
+index 8699212de..72937390d 100644
+--- a/include/GLES3/gl3platform.h
++++ b/include/GLES3/gl3platform.h
+@@ -14,7 +14,11 @@
+  *      https://github.com/KhronosGroup/OpenGL-Registry
+  */
+ 
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/KHR/khrplatform.h>
++#else
+ #include <KHR/khrplatform.h>
++#endif
+ 
+ #ifndef GL_APICALL
+ #define GL_APICALL  KHRONOS_APICALL

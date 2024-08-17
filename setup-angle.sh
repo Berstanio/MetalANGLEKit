@@ -8,6 +8,8 @@ cd angle
 python3 scripts/bootstrap.py
 gclient sync
 
+git apply ../angle_include_fix.patch
+
 rm -r out/
 
 gn gen out/Debug-iphonesimulator_arm64 --args="target_cpu=\"arm64\" is_debug=true target_os=\"ios\" ios_enable_code_signing=false angle_enable_metal=true angle_enable_wgpu=false ios_deployment_target=\"11.0\" angle_build_all=false target_environment=\"simulator\""

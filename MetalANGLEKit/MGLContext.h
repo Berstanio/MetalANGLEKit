@@ -6,7 +6,7 @@
 
 #import <MetalANGLEKit/MGLLayer.h>
 
-#include <MetalANGLEKit/egl_stub.h>
+#include <MetalANGLEKit/EGL/egl.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
