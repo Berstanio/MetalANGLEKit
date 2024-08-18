@@ -24,8 +24,8 @@ cd angle
 python3 scripts/bootstrap.py
 gclient sync
 
-git apply ../angle_include_fix.patch
 apply_git_patch ../angle_include_fix.patch
+apply_git_patch ../angle_metal_default_fix.patch
 
 rm -r out/
 
