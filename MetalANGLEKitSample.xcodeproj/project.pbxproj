@@ -19,6 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F092D3992C7291F70076C252 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0DAFF7B2C70DA7500EC7745 /* MetalANGLEKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F098B5FF2C6B7160005B999A;
+			remoteInfo = MetalANGLEKit;
+		};
 		F0DAFF7F2C70DA7500EC7745 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0DAFF7B2C70DA7500EC7745 /* MetalANGLEKit.xcodeproj */;
@@ -134,6 +141,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F092D39A2C7291F70076C252 /* PBXTargetDependency */,
 			);
 			name = MetalANGLEKitSample;
 			productName = MetalANGLEKitSample;
@@ -215,6 +223,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F092D39A2C7291F70076C252 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MetalANGLEKit;
+			targetProxy = F092D3992C7291F70076C252 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F098B6672C6E43B2005B999A /* Main.storyboard */ = {
