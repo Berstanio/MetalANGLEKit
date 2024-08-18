@@ -16,6 +16,10 @@
 		F098B6892C6EA0DA005B999A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F098B6812C6EA0DA005B999A /* Assets.xcassets */; };
 		F0DAFF842C70DBD800EC7745 /* MetalANGLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DAFF802C70DA7500EC7745 /* MetalANGLEKit.framework */; };
 		F0DAFF852C70DBD800EC7745 /* MetalANGLEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0DAFF802C70DA7500EC7745 /* MetalANGLEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F0E2D5622C70EA2B00D28B76 /* libGLESv2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E2D55F2C70EA1E00D28B76 /* libGLESv2.xcframework */; };
+		F0E2D5632C70EA2B00D28B76 /* libGLESv2.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0E2D55F2C70EA1E00D28B76 /* libGLESv2.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F0E2D5642C70EA2C00D28B76 /* libEGL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E2D55E2C70EA1E00D28B76 /* libEGL.xcframework */; };
+		F0E2D5652C70EA2C00D28B76 /* libEGL.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0E2D55E2C70EA1E00D28B76 /* libEGL.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F0E2D5652C70EA2C00D28B76 /* libEGL.xcframework in Embed Frameworks */,
+				F0E2D5632C70EA2B00D28B76 /* libGLESv2.xcframework in Embed Frameworks */,
 				F0DAFF852C70DBD800EC7745 /* MetalANGLEKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -62,6 +68,8 @@
 		F098B6802C6EA0DA005B999A /* GLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
 		F098B6812C6EA0DA005B999A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0DAFF7B2C70DA7500EC7745 /* MetalANGLEKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MetalANGLEKit.xcodeproj; sourceTree = "<group>"; };
+		F0E2D55E2C70EA1E00D28B76 /* libEGL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libEGL.xcframework; path = Frameworks/libEGL.xcframework; sourceTree = "<group>"; };
+		F0E2D55F2C70EA1E00D28B76 /* libGLESv2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libGLESv2.xcframework; path = Frameworks/libGLESv2.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E2D5642C70EA2C00D28B76 /* libEGL.xcframework in Frameworks */,
+				F0E2D5622C70EA2B00D28B76 /* libGLESv2.xcframework in Frameworks */,
 				F0DAFF842C70DBD800EC7745 /* MetalANGLEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +124,8 @@
 		F0DAFF782C70DA0E00EC7745 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0E2D55E2C70EA1E00D28B76 /* libEGL.xcframework */,
+				F0E2D55F2C70EA1E00D28B76 /* libGLESv2.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
