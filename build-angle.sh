@@ -40,20 +40,18 @@ cp -R angle/out/$BUILD_TYPE-iphoneos/libGLESv2.framework $TEMP_DIR/device
 lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.framework/libEGL angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libEGL.framework/libEGL -output $TEMP_DIR/simulator/libEGL.framework/libEGL
 lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.framework/libGLESv2 angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libGLESv2.framework/libGLESv2 -output $TEMP_DIR/simulator/libGLESv2.framework/libGLESv2
 
-if [ "$BUILD_TYPE" == "Debug" ]; then
-    cp -R angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.dSYM $TEMP_DIR/simulator/
-    cp -R angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.dSYM $TEMP_DIR/simulator/
-    cp -R angle/out/$BUILD_TYPE-iphoneos/libEGL.dSYM $TEMP_DIR/device
-    cp -R angle/out/$BUILD_TYPE-iphoneos/libGLESv2.dSYM $TEMP_DIR/device
+cp -R angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.dSYM $TEMP_DIR/simulator/
+cp -R angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.dSYM $TEMP_DIR/simulator/
+cp -R angle/out/$BUILD_TYPE-iphoneos/libEGL.dSYM $TEMP_DIR/device
+cp -R angle/out/$BUILD_TYPE-iphoneos/libGLESv2.dSYM $TEMP_DIR/device
 
-    lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.dSYM/Contents/Resources/DWARF/libEGL \
-        angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libEGL.dSYM/Contents/Resources/DWARF/libEGL \
-        -output $TEMP_DIR/simulator/libEGL.dSYM/Contents/Resources/DWARF/libEGL
+lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libEGL.dSYM/Contents/Resources/DWARF/libEGL \
+    angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libEGL.dSYM/Contents/Resources/DWARF/libEGL \
+    -output $TEMP_DIR/simulator/libEGL.dSYM/Contents/Resources/DWARF/libEGL
 
-    lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.dSYM/Contents/Resources/DWARF/libGLESv2 \
-        angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libGLESv2.dSYM/Contents/Resources/DWARF/libGLESv2 \
-        -output $TEMP_DIR/simulator/libGLESv2.dSYM/Contents/Resources/DWARF/libGLESv2
-fi
+lipo -create angle/out/$BUILD_TYPE-iphonesimulator_arm64/libGLESv2.dSYM/Contents/Resources/DWARF/libGLESv2 \
+    angle/out/$BUILD_TYPE-iphonesimulator_x86_64/libGLESv2.dSYM/Contents/Resources/DWARF/libGLESv2 \
+    -output $TEMP_DIR/simulator/libGLESv2.dSYM/Contents/Resources/DWARF/libGLESv2
 
 SDKS="device simulator"
 for SDK in $SDKS; do 
@@ -68,18 +66,12 @@ for SDK in $SDKS; do
 done
 
 mkdir Frameworks/
-if [ "$BUILD_TYPE" == "Debug" ]; then
-    xcodebuild -create-xcframework -framework $TEMP_DIR/device/libEGL.framework -debug-symbols $TEMP_DIR/device/libEGL.dSYM \
-        -framework $TEMP_DIR/simulator/libEGL.framework -debug-symbols $TEMP_DIR/simulator/libEGL.dSYM \
-        -output Frameworks/libEGL.xcframework
-    
-    xcodebuild -create-xcframework -framework $TEMP_DIR/device/libGLESv2.framework -debug-symbols $TEMP_DIR/device/libGLESv2.dSYM \
-         -framework $TEMP_DIR/simulator/libGLESv2.framework -debug-symbols $TEMP_DIR/simulator/libGLESv2.dSYM \
-         -output Frameworks/libGLESv2.xcframework
+xcodebuild -create-xcframework -framework $TEMP_DIR/device/libEGL.framework -debug-symbols $TEMP_DIR/device/libEGL.dSYM \
+    -framework $TEMP_DIR/simulator/libEGL.framework -debug-symbols $TEMP_DIR/simulator/libEGL.dSYM \
+    -output Frameworks/libEGL.xcframework
 
-else
-    xcodebuild -create-xcframework -framework $TEMP_DIR/device/libEGL.framework -framework $TEMP_DIR/simulator/libEGL.framework -output Frameworks/libEGL.xcframework
-    xcodebuild -create-xcframework -framework $TEMP_DIR/device/libGLESv2.framework -framework $TEMP_DIR/simulator/libGLESv2.framework -output Frameworks/libGLESv2.xcframework
-fi
+xcodebuild -create-xcframework -framework $TEMP_DIR/device/libGLESv2.framework -debug-symbols $TEMP_DIR/device/libGLESv2.dSYM \
+        -framework $TEMP_DIR/simulator/libGLESv2.framework -debug-symbols $TEMP_DIR/simulator/libGLESv2.dSYM \
+        -output Frameworks/libGLESv2.xcframework
 
 
