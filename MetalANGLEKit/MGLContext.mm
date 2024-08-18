@@ -64,21 +64,6 @@ void Throw(NSString *msg)
 
 EGLContext CreateEGLContext(EGLDisplay display, MGLRenderingAPI api, EGLContext sharedContext)
 {
-    // Init config
-    std::vector<EGLint> surfaceAttribs = {
-        EGL_RED_SIZE,       EGL_DONT_CARE, EGL_GREEN_SIZE,   EGL_DONT_CARE,
-        EGL_BLUE_SIZE,      EGL_DONT_CARE, EGL_ALPHA_SIZE,   EGL_DONT_CARE,
-        EGL_DEPTH_SIZE,     EGL_DONT_CARE, EGL_STENCIL_SIZE, EGL_DONT_CARE,
-        EGL_SAMPLE_BUFFERS, EGL_DONT_CARE, EGL_SAMPLES,      EGL_DONT_CARE,
-    };
-    surfaceAttribs.push_back(EGL_NONE);
-    EGLConfig config;
-    EGLint numConfigs;
-    if (!eglChooseConfig(display, surfaceAttribs.data(), &config, 1, &numConfigs) || numConfigs < 1)
-    {
-        Throw(@"Failed to call eglChooseConfig()");
-    }
-
     // Init context
     int ctxMajorVersion = 2;
     int ctxMinorVersion = 0;
@@ -102,7 +87,7 @@ EGLContext CreateEGLContext(EGLDisplay display, MGLRenderingAPI api, EGLContext 
     EGLint ctxAttribs[] = {EGL_CONTEXT_MAJOR_VERSION, ctxMajorVersion, EGL_CONTEXT_MINOR_VERSION,
                            ctxMinorVersion, EGL_NONE};
 
-    EGLContext eglContext = eglCreateContext(display, config, sharedContext, ctxAttribs);
+    EGLContext eglContext = eglCreateContext(display, EGL_NO_CONFIG_KHR, sharedContext, ctxAttribs);
     if (eglContext == EGL_NO_CONTEXT)
     {
         Throw(@"Failed to call eglCreateContext()");
