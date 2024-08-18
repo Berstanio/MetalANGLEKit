@@ -81,7 +81,6 @@
 		F098B6382C6BFB42005B999A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F098B6442C6CF2D1005B999A /* libGLESv2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libGLESv2.xcframework; path = Frameworks/libGLESv2.xcframework; sourceTree = "<group>"; };
 		F098B64B2C6CFAB3005B999A /* libEGL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libEGL.xcframework; path = Frameworks/libEGL.xcframework; sourceTree = "<group>"; };
-		F098B6502C6CFFBC005B999A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		F098B7022C6EA417005B999A /* GLES2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLES2; path = angle/include/GLES2; sourceTree = "<group>"; };
 		F098B7032C6EA417005B999A /* GLES */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLES; path = angle/include/GLES; sourceTree = "<group>"; };
 		F098B7042C6EA417005B999A /* EGL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = EGL; path = angle/include/EGL; sourceTree = "<group>"; };
@@ -95,11 +94,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F098B64C2C6CFAB3005B999A /* libEGL.xcframework in Frameworks */,
+				F098B6462C6CF2D1005B999A /* libGLESv2.xcframework in Frameworks */,
 				F098B6372C6BF99C005B999A /* CoreGraphics.framework in Frameworks */,
 				F098B6332C6BF952005B999A /* QuartzCore.framework in Frameworks */,
 				F098B6392C6BFB42005B999A /* AppKit.framework in Frameworks */,
 				F098B6352C6BF969005B999A /* UIKit.framework in Frameworks */,
-				F098B6462C6CF2D1005B999A /* libGLESv2.xcframework in Frameworks */,
 				F098B6312C6B85F4005B999A /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,7 +152,6 @@
 		F098B62F2C6B85F4005B999A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F098B6502C6CFFBC005B999A /* OpenGLES.framework */,
 				F098B64B2C6CFAB3005B999A /* libEGL.xcframework */,
 				F098B6442C6CF2D1005B999A /* libGLESv2.xcframework */,
 				F098B6382C6BFB42005B999A /* AppKit.framework */,
