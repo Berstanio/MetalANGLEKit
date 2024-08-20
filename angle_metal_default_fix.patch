@@ -1,8 +1,7 @@
 diff --git a/src/libANGLE/Display.cpp b/src/libANGLE/Display.cpp
-index a939e4154..6ac5f259f 100644
---- a/src/libANGLE/Display.cpp
-+++ b/src/libANGLE/Display.cpp
-@@ -319,6 +319,15 @@ EGLAttrib GetDisplayTypeFromEnvironment()
+--- a/src/libANGLE/Display.cpp	(revision 5967afe706996483ab87725435479754ccd72271)
++++ b/src/libANGLE/Display.cpp	(date 1724161676476)
+@@ -319,6 +319,15 @@
          return EGL_PLATFORM_ANGLE_TYPE_NULL_ANGLE;
      }
  #endif
@@ -18,3 +17,42 @@ index a939e4154..6ac5f259f 100644
  #if defined(ANGLE_ENABLE_D3D11)
      return EGL_PLATFORM_ANGLE_TYPE_D3D11_ANGLE;
  #elif defined(ANGLE_ENABLE_D3D9)
+@@ -326,7 +335,7 @@
+ #elif defined(ANGLE_ENABLE_VULKAN) && defined(ANGLE_PLATFORM_ANDROID)
+     return EGL_PLATFORM_ANGLE_TYPE_VULKAN_ANGLE;
+ #elif defined(ANGLE_ENABLE_OPENGL)
+-#    if defined(ANGLE_PLATFORM_ANDROID) || defined(ANGLE_USE_GBM)
++#    if defined(ANGLE_PLATFORM_ANDROID) || defined(ANGLE_USE_GBM) || defined(ANGLE_ENABLE_EAGL)
+     return EGL_PLATFORM_ANGLE_TYPE_OPENGLES_ANGLE;
+ #    else
+     return EGL_PLATFORM_ANGLE_TYPE_OPENGL_ANGLE;
+@@ -411,11 +420,6 @@
+ #    elif ANGLE_ENABLE_CGL
+             impl = new rx::DisplayCGL(state);
+             break;
+-
+-#    elif ANGLE_ENABLE_EAGL
+-            impl = new rx::DisplayEAGL(state);
+-            break;
+-
+ #    elif defined(ANGLE_PLATFORM_LINUX)
+ #        if defined(ANGLE_USE_GBM)
+             if (platformType == 0)
+@@ -443,7 +447,7 @@
+             }
+             break;
+
+-#    elif defined(ANGLE_PLATFORM_ANDROID)
++#    elif defined(ANGLE_PLATFORM_ANDROID) || defined(ANGLE_ENABLE_EAGL)
+             // No GL support on this platform, fail display creation.
+             impl = nullptr;
+             break;
+@@ -492,6 +496,8 @@
+             }
+ #    elif defined(ANGLE_PLATFORM_ANDROID)
+             impl = new rx::DisplayAndroid(state);
++#    elif defined(ANGLE_ENABLE_EAGL)
++            impl = new rx::DisplayEAGL(state);
+ #    else
+             // No GLES support on this platform, fail display creation.
+             impl = nullptr;
