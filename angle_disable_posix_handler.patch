@@ -1,0 +1,12 @@
+diff --git a/util/posix/crash_handler_posix.cpp b/util/posix/crash_handler_posix.cpp
+--- a/util/posix/crash_handler_posix.cpp	(revision 5967afe706996483ab87725435479754ccd72271)
++++ b/util/posix/crash_handler_posix.cpp	(date 1724161043509)
+@@ -71,7 +71,7 @@
+
+ namespace angle
+ {
+-#if defined(ANGLE_PLATFORM_ANDROID) || defined(ANGLE_PLATFORM_FUCHSIA)
++#if defined(ANGLE_PLATFORM_ANDROID) || defined(ANGLE_PLATFORM_FUCHSIA) || defined(ANGLE_PLATFORM_IOS)
+
+ void PrintStackBacktrace()
+ {

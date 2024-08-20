@@ -28,6 +28,7 @@ apply_git_patch ../angle_include_fix.patch
 apply_git_patch ../angle_metal_default_fix.patch
 apply_git_patch ../angle_feature_util_fix.patch
 apply_git_patch ../angle_feature_util_metal_check.patch
+apply_git_patch ../angle_disable_posix_handler.patch
 
 gn gen out/Debug-iphonesimulator_arm64 --args="is_debug=true enable_dsyms=true target_os=\"ios\" target_cpu=\"arm64\" ios_enable_code_signing=false angle_enable_metal=true angle_enable_wgpu=false ios_deployment_target=\"11.0\" angle_build_all=false target_environment=\"simulator\""
 gn gen out/Debug-iphonesimulator_x86_64 --args="is_debug=true enable_dsyms=true target_os=\"ios\" target_cpu=\"x64\" ios_enable_code_signing=false angle_enable_metal=true angle_enable_wgpu=false ios_deployment_target=\"11.0\" angle_build_all=false target_environment=\"simulator\""
