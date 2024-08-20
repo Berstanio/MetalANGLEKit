@@ -32,3 +32,4 @@ FOUNDATION_EXPORT const unsigned char MetalANGLEKitVersionString[];
 #import <MetalANGLEKit/GLES3/gl3.h>
 #import <MetalANGLEKit/GLES3/gl31.h>
 #import <MetalANGLEKit/GLES3/gl32.h>
+#import <MetalANGLEKit/feature_support_util.h>

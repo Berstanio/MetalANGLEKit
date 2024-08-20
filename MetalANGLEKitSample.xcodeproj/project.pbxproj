@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F092D3B62C74CB740076C252 /* libfeature_support.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F092D3B42C74CAC00076C252 /* libfeature_support.xcframework */; };
+		F092D3B72C74CB740076C252 /* libfeature_support.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F092D3B42C74CAC00076C252 /* libfeature_support.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F098B6622C6E43B2005B999A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098B6612C6E43B2005B999A /* AppDelegate.swift */; };
 		F098B6692C6E43B2005B999A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F098B6682C6E43B2005B999A /* Base */; };
 		F098B66B2C6E43B4005B999A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F098B66A2C6E43B4005B999A /* Assets.xcassets */; };
@@ -46,6 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F092D3B72C74CB740076C252 /* libfeature_support.xcframework in Embed Frameworks */,
 				F0E2D5652C70EA2C00D28B76 /* libEGL.xcframework in Embed Frameworks */,
 				F0E2D5632C70EA2B00D28B76 /* libGLESv2.xcframework in Embed Frameworks */,
 				F0DAFF852C70DBD800EC7745 /* MetalANGLEKit.framework in Embed Frameworks */,
@@ -56,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F092D3B42C74CAC00076C252 /* libfeature_support.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libfeature_support.xcframework; path = Frameworks/libfeature_support.xcframework; sourceTree = "<group>"; };
 		F098B65E2C6E43B2005B999A /* MetalANGLEKitSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalANGLEKitSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F098B6612C6E43B2005B999A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F098B6682C6E43B2005B999A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F092D3B62C74CB740076C252 /* libfeature_support.xcframework in Frameworks */,
 				F0E2D5642C70EA2C00D28B76 /* libEGL.xcframework in Frameworks */,
 				F0E2D5622C70EA2B00D28B76 /* libGLESv2.xcframework in Frameworks */,
 				F0DAFF842C70DBD800EC7745 /* MetalANGLEKit.framework in Frameworks */,
@@ -124,6 +129,7 @@
 		F0DAFF782C70DA0E00EC7745 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F092D3B42C74CAC00076C252 /* libfeature_support.xcframework */,
 				F0E2D55E2C70EA1E00D28B76 /* libEGL.xcframework */,
 				F0E2D55F2C70EA1E00D28B76 /* libGLESv2.xcframework */,
 			);

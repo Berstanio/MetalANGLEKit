@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F092D3AE2C74BC060076C252 /* libfeature_support.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F092D3AD2C74BC060076C252 /* libfeature_support.xcframework */; };
+		F092D3AF2C74BC060076C252 /* libfeature_support.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F092D3AD2C74BC060076C252 /* libfeature_support.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F092D3B12C74BC900076C252 /* feature_support_util.h in Headers */ = {isa = PBXBuildFile; fileRef = F092D3B02C74BC900076C252 /* feature_support_util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F092D3B32C74BD190076C252 /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = F092D3B22C74BD190076C252 /* export.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F098B6042C6B7160005B999A /* MetalANGLEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F098B6032C6B7160005B999A /* MetalANGLEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F098B61C2C6B71D2005B999A /* MGLKView.h in Headers */ = {isa = PBXBuildFile; fileRef = F098B60A2C6B71D2005B999A /* MGLKView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F098B61D2C6B71D2005B999A /* MGLContext.h in Headers */ = {isa = PBXBuildFile; fileRef = F098B60B2C6B71D2005B999A /* MGLContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F092D3AF2C74BC060076C252 /* libfeature_support.xcframework in Embed Frameworks */,
 				F098B64D2C6CFAB3005B999A /* libEGL.xcframework in Embed Frameworks */,
 				F098B6472C6CF2D1005B999A /* libGLESv2.xcframework in Embed Frameworks */,
 			);
@@ -55,6 +60,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F092D3AD2C74BC060076C252 /* libfeature_support.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libfeature_support.xcframework; path = Frameworks/libfeature_support.xcframework; sourceTree = "<group>"; };
+		F092D3B02C74BC900076C252 /* feature_support_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = feature_support_util.h; path = angle/src/feature_support_util/feature_support_util.h; sourceTree = "<group>"; };
+		F092D3B22C74BD190076C252 /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = export.h; path = angle/include/export.h; sourceTree = "<group>"; };
 		F098B6002C6B7160005B999A /* MetalANGLEKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetalANGLEKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F098B6032C6B7160005B999A /* MetalANGLEKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalANGLEKit.h; sourceTree = "<group>"; };
 		F098B60A2C6B71D2005B999A /* MGLKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLKView.h; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 				F098B6462C6CF2D1005B999A /* libGLESv2.xcframework in Frameworks */,
 				F098B6372C6BF99C005B999A /* CoreGraphics.framework in Frameworks */,
 				F098B6332C6BF952005B999A /* QuartzCore.framework in Frameworks */,
+				F092D3AE2C74BC060076C252 /* libfeature_support.xcframework in Frameworks */,
 				F098B6392C6BFB42005B999A /* AppKit.framework in Frameworks */,
 				F098B6352C6BF969005B999A /* UIKit.framework in Frameworks */,
 				F098B6312C6B85F4005B999A /* Metal.framework in Frameworks */,
@@ -152,6 +161,7 @@
 		F098B62F2C6B85F4005B999A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F092D3AD2C74BC060076C252 /* libfeature_support.xcframework */,
 				F098B64B2C6CFAB3005B999A /* libEGL.xcframework */,
 				F098B6442C6CF2D1005B999A /* libGLESv2.xcframework */,
 				F098B6382C6BFB42005B999A /* AppKit.framework */,
@@ -166,6 +176,8 @@
 		F098B7002C6EA401005B999A /* include */ = {
 			isa = PBXGroup;
 			children = (
+				F092D3B22C74BD190076C252 /* export.h */,
+				F092D3B02C74BC900076C252 /* feature_support_util.h */,
 				F098B7042C6EA417005B999A /* EGL */,
 				F098B7032C6EA417005B999A /* GLES */,
 				F098B7022C6EA417005B999A /* GLES2 */,
@@ -182,6 +194,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F092D3B12C74BC900076C252 /* feature_support_util.h in Headers */,
+				F092D3B32C74BD190076C252 /* export.h in Headers */,
 				F098B61F2C6B71D2005B999A /* MGLKViewController.h in Headers */,
 				F098B62C2C6B71D2005B999A /* MGLDisplay.h in Headers */,
 				F098B61C2C6B71D2005B999A /* MGLKView.h in Headers */,
@@ -208,7 +222,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F098B6072C6B7160005B999A /* Build configuration list for PBXNativeTarget "MetalANGLEKit" */;
 			buildPhases = (
-				F098B63A2C6CE67F005B999A /* Compile ANGLE */,
 				F098B5FB2C6B7160005B999A /* Headers */,
 				F0DAFF6E2C70BF2900EC7745 /* Patch ANGLE Headers */,
 				F098B5FC2C6B7160005B999A /* Sources */,
@@ -268,25 +281,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F098B63A2C6CE67F005B999A /* Compile ANGLE */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Compile ANGLE";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=$PATH:/opt/homebrew/bin/\n\n#${SRCROOT}/build-angle.sh ${CONFIGURATION} \n";
-		};
 		F0DAFF6E2C70BF2900EC7745 /* Patch ANGLE Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;

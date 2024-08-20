@@ -1,0 +1,29 @@
+diff --git a/src/feature_support_util/feature_support_util.h b/src/feature_support_util/feature_support_util.h
+--- a/src/feature_support_util/feature_support_util.h	(revision 5967afe706996483ab87725435479754ccd72271)
++++ b/src/feature_support_util/feature_support_util.h	(date 1724157714847)
+@@ -9,7 +9,11 @@
+ #ifndef FEATURE_SUPPORT_UTIL_H_
+ #define FEATURE_SUPPORT_UTIL_H_
+
++#ifdef METALANGLEKIT_INCLUDE
++#include <MetalANGLEKit/export.h>
++#else
+ #include "export.h"
++#endif
+
+ #ifdef __cplusplus
+ extern "C" {
+@@ -122,8 +126,13 @@
+
+ // The following are internal versions supported by the current  feature-support-utility API.
+
++#ifdef METALANGLEKIT_INCLUDE
++#define kFeatureVersion_LowestSupported  2
++#define kFeatureVersion_HighestSupported 2
++#else
+ constexpr unsigned int kFeatureVersion_LowestSupported  = 2;
+ constexpr unsigned int kFeatureVersion_HighestSupported = 2;
++#endif
+
+ #ifdef __cplusplus
+ }  // extern "C"
