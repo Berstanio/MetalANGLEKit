@@ -11,8 +11,6 @@
 
 #include <MetalANGLEKit/EGL/egl.h>
 
-bool IsMetalDisplayAvailable();
-
 @interface MGLDisplay : NSObject
 
 @property(nonatomic, readonly) EGLDisplay eglDisplay;

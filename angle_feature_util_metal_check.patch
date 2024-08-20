@@ -1,0 +1,37 @@
+diff --git a/src/feature_support_util/feature_support_util.h b/src/feature_support_util/feature_support_util.h
+--- a/src/feature_support_util/feature_support_util.h	(revision 5967afe706996483ab87725435479754ccd72271)
++++ b/src/feature_support_util/feature_support_util.h	(date 1724157714847)
+@@ -43,6 +43,8 @@
+ //
+ ANGLE_EXPORT bool ANGLEGetFeatureSupportUtilAPIVersion(unsigned int *versionToUse);
+
++ANGLE_EXPORT bool ANGLEIsMetalRendererAvailable();
++
+ // The Android EGL loader will call this function in order to parse a rules file
+ // and create a set of rules, for which a handle is returned.
+ //
+diff --git a/src/feature_support_util/feature_support_util.cpp b/src/feature_support_util/feature_support_util.cpp
+--- a/src/feature_support_util/feature_support_util.cpp	(revision 5967afe706996483ab87725435479754ccd72271)
++++ b/src/feature_support_util/feature_support_util.cpp	(date 1724156354632)
+@@ -25,6 +25,10 @@
+ #include <vector>
+ #include "../gpu_info_util/SystemInfo.h"
+
++#ifdef __APPLE__
++#include "common/apple_platform_utils.h"
++#endif
++
+ namespace angle
+ {
+
+@@ -757,6 +761,10 @@
+
+ using namespace angle;
+
++ANGLE_EXPORT bool ANGLEIsMetalRendererAvailable() {
++    return IsMetalRendererAvailable();
++}
++
+ // This function is part of the version-2 API:
+ ANGLE_EXPORT bool ANGLEGetFeatureSupportUtilAPIVersion(unsigned int *versionToUse)
+ {

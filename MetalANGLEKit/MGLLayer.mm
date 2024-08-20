@@ -14,6 +14,7 @@
 #include <EGL/eglplatform.h>
 #include <GLES2/gl2ext.h>
 #include <GLES3/gl3.h>
+#include <MetalANGLEKit/feature_support_util.h>
 #import "MGLContext+Private.h"
 #import "MGLDisplay.h"
 
@@ -349,7 +350,7 @@ GLint LinkProgram(GLuint program)
 
     _eglSurface = EGL_NO_SURFACE;
 
-    if (IsMetalDisplayAvailable())
+    if (ANGLEIsMetalRendererAvailable())
     {
         _metalLayer       = [[CAMetalLayer alloc] init];
         _metalLayer.frame = self.bounds;
@@ -374,7 +375,7 @@ GLint LinkProgram(GLuint program)
 {
     [super setContentsScale:contentsScale];
 
-    if (IsMetalDisplayAvailable())
+    if (ANGLEIsMetalRendererAvailable())
     {
         _metalLayer.contentsScale = contentsScale;
     }
@@ -386,7 +387,7 @@ GLint LinkProgram(GLuint program)
 
 - (CGSize)drawableSize
 {
-    if (IsMetalDisplayAvailable())
+    if (ANGLEIsMetalRendererAvailable())
     {
         if (_metalLayer.drawableSize.width == 0 && _metalLayer.drawableSize.height == 0)
         {
@@ -594,7 +595,7 @@ GLint LinkProgram(GLuint program)
 - (void)setDrawableMultisample:(MGLDrawableMultisample)drawableMultisample
 {
     _drawableMultisample = drawableMultisample;
-    if (!IsMetalDisplayAvailable() && _drawableMultisample > 0)
+    if (!ANGLEIsMetalRendererAvailable() && _drawableMultisample > 0)
     {
         // Default backbuffer MSAA is not supported in native GL backend yet.
         // Use offscreen MSAA buffer.
@@ -605,7 +606,7 @@ GLint LinkProgram(GLuint program)
 
 - (void)setRetainedBacking:(BOOL)retainedBacking
 {
-    if (!IsMetalDisplayAvailable())
+    if (!ANGLEIsMetalRendererAvailable())
     {
         if (_drawableMultisample > 0)
         {
@@ -674,7 +675,7 @@ GLint LinkProgram(GLuint program)
 
 - (void)checkLayerSize
 {
-    if (IsMetalDisplayAvailable())
+    if (ANGLEIsMetalRendererAvailable())
     {
         // Resize the metal layer
         [CATransaction begin];
@@ -745,7 +746,7 @@ GLint LinkProgram(GLuint program)
 
     EGLNativeWindowType nativeWindowPtr;
 
-    if (IsMetalDisplayAvailable())
+    if (ANGLEIsMetalRendererAvailable())
     {
         // If metal layer is available, use it directly
         nativeWindowPtr = (__bridge EGLNativeWindowType)_metalLayer;
@@ -1030,7 +1031,7 @@ GLint LinkProgram(GLuint program)
     _offscreenColorUnsizedFormat  = textureFormat;
     _offscreenColorFormatDataType = type;
 
-    if (IsMetalDisplayAvailable())
+    if (ANGLEIsMetalRendererAvailable())
     {
         glTexStorage2DEXT(GL_TEXTURE_2D, 1, textureSizedFormat,
                             static_cast<GLsizei>(_offscreenFBOSize.width),
