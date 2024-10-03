@@ -1,0 +1,13 @@
+diff --git a/src/libANGLE/renderer/gl/eagl/DisplayEAGL.mm b/src/libANGLE/renderer/gl/eagl/DisplayEAGL.mm
+index 9351af815..d3ea8750b 100644
+--- a/src/libANGLE/renderer/gl/eagl/DisplayEAGL.mm
++++ b/src/libANGLE/renderer/gl/eagl/DisplayEAGL.mm
+@@ -306,6 +306,8 @@ void DisplayEAGL::generateExtensions(egl::DisplayExtensions *outExtensions) cons
+     outExtensions->displayTextureShareGroup   = true;
+     outExtensions->displaySemaphoreShareGroup = true;
+ 
++    outExtensions->noConfigContext = true;
++
+     DisplayGL::generateExtensions(outExtensions);
+ }
+ 

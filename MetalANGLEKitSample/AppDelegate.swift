@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setenv("ANGLE_DEFAULT_PLATFORM", "gl", 1)
         // Override point for customization after application launch.
         return true
     }
