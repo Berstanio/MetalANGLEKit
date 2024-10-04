@@ -36,7 +36,7 @@ void Throw(NSString *msg)
         _eglDisplay = eglGetPlatformDisplay(EGL_PLATFORM_ANGLE_ANGLE, nullptr, displayAttribs);
         if (_eglDisplay == EGL_NO_DISPLAY)
         {
-            Throw(@"Failed To call eglGetPlatformDisplay()");
+            Throw(@"Failed To call eglGetPlatformDisplay() - Metal is probably not available");
         }
         if (!eglInitialize(_eglDisplay, NULL, NULL))
         {
