@@ -1,0 +1,12 @@
+diff --git a/src/libANGLE/renderer/metal/DisplayMtl.mm b/src/libANGLE/renderer/metal/DisplayMtl.mm
+--- a/src/libANGLE/renderer/metal/DisplayMtl.mm
++++ b/src/libANGLE/renderer/metal/DisplayMtl.mm
+@@ -435,7 +435,7 @@ gl::Version DisplayMtl::getMaxSupportedESVersion() const
+     // FIXME: None of the feature conditions are checked for simulator support.
+     return gl::Version(3, 0);
+ #else
+-    if (supportsEitherGPUFamily(4, 1))
++    if (supportsEitherGPUFamily(3, 1))
+     {
+         return mtl::kMaxSupportedGLVersion;
+     }
